@@ -1,0 +1,2 @@
+import { defineConfig, devices } from '@playwright/test';
+export default defineConfig({ testDir: './tests/e2e', fullyParallel: true, use: { baseURL: 'http://localhost:4173', trace: 'retain-on-failure' }, projects: [{ name: 'chromium', use: { ...devices['Pixel 7'], browserName: 'chromium' } }, { name: 'webkit', use: { ...devices['iPhone 13'], browserName: 'webkit' } }], webServer: { command: 'npm run preview -- --port 4173', url: 'http://localhost:4173', reuseExistingServer: !process.env.CI }, reporter: [['list'], ['html', { open: 'never' }]] });

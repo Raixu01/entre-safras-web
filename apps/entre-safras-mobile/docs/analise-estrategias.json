@@ -1,0 +1,84 @@
+{
+  "rulesVersion": "0.1",
+  "note": "Simulação de políticas; não mede compreensão, diversão ou equilíbrio empírico.",
+  "results": [
+    {
+      "policy": "reserva",
+      "seeds": 100,
+      "wins": 0,
+      "environment": 100,
+      "cash": 0,
+      "incomplete": 0
+    },
+    {
+      "policy": "prevenir",
+      "seeds": 100,
+      "wins": 100,
+      "environment": 0,
+      "cash": 0,
+      "incomplete": 0
+    },
+    {
+      "policy": "variada",
+      "seeds": 100,
+      "wins": 0,
+      "environment": 1,
+      "cash": 0,
+      "incomplete": 99
+    }
+  ],
+  "cashCase": [
+    {
+      "event": "drought-2",
+      "choices": {
+        "lia": "Mutirão de colheita",
+        "bento": "Diversificação",
+        "rosa": "Reservar"
+      },
+      "cash": {
+        "lia": 12,
+        "bento": 7,
+        "rosa": 9
+      }
+    },
+    {
+      "event": "pests-2",
+      "choices": {
+        "lia": "Reservar",
+        "bento": "Mutirão de colheita",
+        "rosa": "Reservar"
+      },
+      "cash": {
+        "lia": 10,
+        "bento": 10,
+        "rosa": 12
+      }
+    },
+    {
+      "event": "drought-1",
+      "choices": {
+        "lia": "Cobertura do solo",
+        "bento": "Cobertura do solo",
+        "rosa": "Assistência técnica"
+      },
+      "cash": {
+        "lia": 6,
+        "bento": 6,
+        "rosa": 11
+      }
+    },
+    {
+      "event": "flood-2",
+      "choices": {
+        "lia": "Diversificação",
+        "bento": "Mutirão de colheita",
+        "rosa": "Reservar"
+      },
+      "cash": {
+        "lia": 2,
+        "bento": 7,
+        "rosa": 14
+      }
+    }
+  ]
+}

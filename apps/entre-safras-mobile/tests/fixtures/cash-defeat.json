@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "0.1",
+  "appVersion": "0.1.0",
+  "gameId": "search-746",
+  "seed": 746,
+  "shuffleVersion": "mulberry32-fy-v1",
+  "deck": [
+    "drought-2",
+    "pests-2",
+    "drought-1",
+    "flood-2",
+    "favorable-1",
+    "regular-1",
+    "favorable-2",
+    "fair-1",
+    "pests-1",
+    "flood-1"
+  ],
+  "revision": 35,
+  "phase": "event",
+  "cursor": 4,
+  "round": 4,
+  "cash": {
+    "lia": 2,
+    "bento": 7,
+    "rosa": 14
+  },
+  "resilience": 2,
+  "startResilience": 2,
+  "installations": {
+    "lia": [
+      "soil_cover",
+      "diversification"
+    ],
+    "bento": [
+      "diversification",
+      "soil_cover"
+    ]
+  },
+  "cooperativeRound": null,
+  "choices": {
+    "lia": {
+      "action": "A2"
+    },
+    "bento": {
+      "action": "A3"
+    },
+    "rosa": {
+      "action": "reserve"
+    }
+  },
+  "confirmed": {
+    "lia": true,
+    "bento": true,
+    "rosa": true
+  },
+  "history": [
+    {
+      "round": 1,
+      "eventId": "drought-2",
+      "choices": {
+        "lia": {
+          "action": "A3"
+        },
+        "bento": {
+          "action": "A2"
+        },
+        "rosa": {
+          "action": "reserve"
+        }
+      },
+      "accounts": {
+        "lia": {
+          "before": 12,
+          "preparation": -3,
+          "cost": 2,
+          "transfer": 0,
+          "gross": 10,
+          "grossLoss": 6,
+          "community": 1,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 5,
+          "revenue": 5,
+          "after": 12
+        },
+        "bento": {
+          "before": 12,
+          "preparation": -3,
+          "cost": 3,
+          "transfer": 0,
+          "gross": 6,
+          "grossLoss": 6,
+          "community": 1,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 5,
+          "revenue": 1,
+          "after": 7
+        },
+        "rosa": {
+          "before": 6,
+          "preparation": 3,
+          "cost": 0,
+          "transfer": 0,
+          "gross": 0,
+          "grossLoss": 0,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 0,
+          "revenue": 0,
+          "after": 9
+        }
+      },
+      "resilience": {
+        "before": 4,
+        "installations": 1,
+        "assistance": 0,
+        "cooperative": 0,
+        "event": -2,
+        "wear": 0,
+        "after": 3
+      },
+      "cash": {
+        "lia": 12,
+        "bento": 7,
+        "rosa": 9
+      },
+      "outcome": [],
+      "victory": false
+    },
+    {
+      "round": 2,
+      "eventId": "pests-2",
+      "choices": {
+        "lia": {
+          "action": "reserve"
+        },
+        "bento": {
+          "action": "A3"
+        },
+        "rosa": {
+          "action": "reserve"
+        }
+      },
+      "accounts": {
+        "lia": {
+          "before": 12,
+          "preparation": -3,
+          "cost": 0,
+          "transfer": 0,
+          "gross": 6,
+          "grossLoss": 5,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 5,
+          "revenue": 1,
+          "after": 10
+        },
+        "bento": {
+          "before": 7,
+          "preparation": -3,
+          "cost": 2,
+          "transfer": 0,
+          "gross": 10,
+          "grossLoss": 5,
+          "community": 0,
+          "individual": 3,
+          "insurance": 0,
+          "loss": 2,
+          "revenue": 8,
+          "after": 10
+        },
+        "rosa": {
+          "before": 9,
+          "preparation": 3,
+          "cost": 0,
+          "transfer": 0,
+          "gross": 0,
+          "grossLoss": 0,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 0,
+          "revenue": 0,
+          "after": 12
+        }
+      },
+      "resilience": {
+        "before": 3,
+        "installations": 0,
+        "assistance": 0,
+        "cooperative": 0,
+        "event": -1,
+        "wear": 1,
+        "after": 1
+      },
+      "cash": {
+        "lia": 10,
+        "bento": 10,
+        "rosa": 12
+      },
+      "outcome": [],
+      "victory": false
+    },
+    {
+      "round": 3,
+      "eventId": "drought-1",
+      "choices": {
+        "lia": {
+          "action": "A1"
+        },
+        "bento": {
+          "action": "A1"
+        },
+        "rosa": {
+          "action": "G1"
+        }
+      },
+      "accounts": {
+        "lia": {
+          "before": 10,
+          "preparation": -3,
+          "cost": 3,
+          "transfer": 0,
+          "gross": 6,
+          "grossLoss": 6,
+          "community": 0,
+          "individual": 2,
+          "insurance": 0,
+          "loss": 4,
+          "revenue": 2,
+          "after": 6
+        },
+        "bento": {
+          "before": 10,
+          "preparation": -3,
+          "cost": 3,
+          "transfer": 0,
+          "gross": 6,
+          "grossLoss": 6,
+          "community": 0,
+          "individual": 2,
+          "insurance": 0,
+          "loss": 4,
+          "revenue": 2,
+          "after": 6
+        },
+        "rosa": {
+          "before": 12,
+          "preparation": 3,
+          "cost": 4,
+          "transfer": 0,
+          "gross": 0,
+          "grossLoss": 0,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 0,
+          "revenue": 0,
+          "after": 11
+        }
+      },
+      "resilience": {
+        "before": 1,
+        "installations": 2,
+        "assistance": 1,
+        "cooperative": 0,
+        "event": -2,
+        "wear": 0,
+        "after": 2
+      },
+      "cash": {
+        "lia": 6,
+        "bento": 6,
+        "rosa": 11
+      },
+      "outcome": [],
+      "victory": false
+    },
+    {
+      "round": 4,
+      "eventId": "flood-2",
+      "choices": {
+        "lia": {
+          "action": "A2"
+        },
+        "bento": {
+          "action": "A3"
+        },
+        "rosa": {
+          "action": "reserve"
+        }
+      },
+      "accounts": {
+        "lia": {
+          "before": 6,
+          "preparation": -3,
+          "cost": 3,
+          "transfer": 0,
+          "gross": 6,
+          "grossLoss": 4,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 4,
+          "revenue": 2,
+          "after": 2
+        },
+        "bento": {
+          "before": 6,
+          "preparation": -3,
+          "cost": 2,
+          "transfer": 0,
+          "gross": 10,
+          "grossLoss": 4,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 4,
+          "revenue": 6,
+          "after": 7
+        },
+        "rosa": {
+          "before": 11,
+          "preparation": 3,
+          "cost": 0,
+          "transfer": 0,
+          "gross": 0,
+          "grossLoss": 0,
+          "community": 0,
+          "individual": 0,
+          "insurance": 0,
+          "loss": 0,
+          "revenue": 0,
+          "after": 14
+        }
+      },
+      "resilience": {
+        "before": 2,
+        "installations": 1,
+        "assistance": 0,
+        "cooperative": 0,
+        "event": -1,
+        "wear": 0,
+        "after": 2
+      },
+      "cash": {
+        "lia": 2,
+        "bento": 7,
+        "rosa": 14
+      },
+      "outcome": [
+        "Lia ficou sem as 3 moedas necessárias ao próximo plantio."
+      ],
+      "victory": false
+    }
+  ],
+  "commandIds": [
+    "test-0",
+    "test-1",
+    "test-2",
+    "test-3",
+    "test-4",
+    "test-5",
+    "test-6",
+    "res-1",
+    "test-8",
+    "test-9",
+    "test-10",
+    "test-11",
+    "test-12",
+    "test-13",
+    "test-14",
+    "test-15",
+    "res-2",
+    "test-17",
+    "test-18",
+    "test-19",
+    "test-20",
+    "test-21",
+    "test-22",
+    "test-23",
+    "test-24",
+    "res-3",
+    "test-26",
+    "test-27",
+    "test-28",
+    "test-29",
+    "test-30",
+    "test-31",
+    "test-32",
+    "test-33",
+    "res-4"
+  ]
+}

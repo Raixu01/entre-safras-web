@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "0.1",
+  "title": "Dinâmicas Agrárias: Entre Safras",
+  "language": "pt-BR",
+  "status": "proposta para implementação e playtest; não é motor executável",
+  "currency": {"name": "moedas", "integerOnly": true, "realMoneyEquivalent": false, "maximum": null},
+  "scope": {"agentCount": 3, "recommendedHumans": 3, "minimumHumans": 2, "maximumHumans": 5, "soloMode": "ensaio", "rounds": 5, "actionsPerRolePerRound": 1, "sharedScreen": true, "remoteSynchronizedMultiplayer": false},
+  "roles": [
+    {"id": "lia", "name": "Lia", "role": "farmer", "initialCash": 12, "theme": "horta e sementes", "initialInstallations": []},
+    {"id": "bento", "name": "Bento", "role": "farmer", "initialCash": 12, "theme": "roça e pomar", "initialInstallations": []},
+    {"id": "rosa", "name": "Rosa", "role": "government", "initialCash": 6, "theme": "gestão pública"}
+  ],
+  "parameters": {
+    "initialResilience": 4, "minimumResilience": 0, "maximumResilience": 6,
+    "plantingCostPerFarmer": 3, "baseHarvestPerFarmer": 6,
+    "governmentGrantPerRound": 3, "grantAlsoInFirstRound": true,
+    "noPreventionWear": 1, "communityProtectionDivisor": 3,
+    "communityProtectionAppliesTo": ["drought", "flood"],
+    "communityProtectionUses": "resilience_at_start_of_round",
+    "cooperativeHarvestBonusPerFarmer": 1,
+    "cooperativeBonusBegins": "round_after_construction",
+    "cooperativeResilienceGainAtConstruction": 1,
+    "cooperativeCountsAsPrevention": false,
+    "finalMinimumFarmerCash": 3, "finalMinimumResilience": 3,
+    "finalCooperativeRequired": true,
+    "earlyDefeatIfAnyFarmerCashBelow": 3,
+    "earlyDefeatIfResilienceEquals": 0,
+    "terminationCheckedAt": "after_all_round_settlement_effects"
+  },
+  "basicCommands": [
+    {"id": "reserve", "name": "Reservar", "cost": 0, "role": "any", "effect": "none", "countsAsCard": false, "countsAsPrevention": false}
+  ],
+  "actions": [
+    {
+      "id": "A1", "name": "Cobertura do solo", "role": "farmer", "cost": 3,
+      "target": "self", "duration": "permanent", "maximumPerFarmer": 1,
+      "installation": "soil_cover", "lossProtection": {"drought": 2},
+      "protectionBegins": "current_round", "resilienceGainOnInstall": 1,
+      "countsAsPreventionOnInstall": true,
+      "description": "Protege 2 contra seca. Ganha 1 de resiliência só na instalação."
+    },
+    {
+      "id": "A2", "name": "Diversificação", "role": "farmer", "cost": 3,
+      "target": "self", "duration": "permanent", "maximumPerFarmer": 1,
+      "installation": "diversification", "lossProtection": {"pests": 3},
+      "protectionBegins": "current_round", "resilienceGainOnInstall": 1,
+      "countsAsPreventionOnInstall": true,
+      "description": "Protege 3 contra pragas. Ganha 1 de resiliência só na instalação."
+    },
+    {
+      "id": "A3", "name": "Mutirão de colheita", "role": "farmer", "cost": 2,
+      "target": "self", "duration": "current_round", "grossHarvestBonus": 4,
+      "repeatableAcrossRounds": true, "countsAsPrevention": false,
+      "description": "Acrescenta 4 à colheita bruta nesta safra."
+    },
+    {
+      "id": "A4", "name": "Cooperativa", "role": "farmer", "cost": 2,
+      "target": "community", "duration": "project",
+      "requires": "both_farmers_A4_and_government_G4_same_round",
+      "uniquePerGame": true, "partialContributionsAllowed": false,
+      "countsAsPrevention": false,
+      "description": "Contribua 2 para o projeto de 6. Exige a ação dos três papéis."
+    },
+    {
+      "id": "G1", "name": "Assistência técnica", "role": "government", "cost": 4,
+      "target": "community", "duration": "current_round", "resilienceGain": 1,
+      "countsAsPrevention": true, "repeatableAcrossRounds": true,
+      "description": "Acrescenta 1 à resiliência e evita desgaste nesta safra."
+    },
+    {
+      "id": "G2", "name": "Seguro da safra", "role": "government", "cost": 3,
+      "target": "both_farmers", "duration": "current_round",
+      "lossProtectionPerFarmer": {"drought": 3, "flood": 3},
+      "protectsResilience": false, "countsAsPrevention": false,
+      "repeatableAcrossRounds": true,
+      "description": "Protege até 3 da perda de cada família por seca ou enchente. Não protege resiliência."
+    },
+    {
+      "id": "G3", "name": "Compras públicas", "role": "government", "cost": 4,
+      "target": "one_farmer", "duration": "instant", "transferAmount": 4,
+      "transferSource": "government", "transferDestination": "selected_farmer",
+      "spendableByRecipient": "after_current_plan_cost_validation",
+      "countsAsPrevention": false, "repeatableAcrossRounds": true,
+      "description": "Transfere 4 do governo para uma família. Não financia a ação atual dessa família."
+    },
+    {
+      "id": "G4", "name": "Cooperativa", "role": "government", "cost": 2,
+      "target": "community", "duration": "project",
+      "requires": "both_farmers_A4_and_government_G4_same_round",
+      "uniquePerGame": true, "partialContributionsAllowed": false,
+      "countsAsPrevention": false,
+      "description": "Contribua 2 para o projeto de 6. Exige a ação dos três papéis."
+    }
+  ],
+  "eventTypes": [
+    {"id": "drought", "name": "Seca", "copies": 2, "grossLossPerFarmer": 6, "harvestBonusPerFarmer": 0, "resilienceDelta": -2},
+    {"id": "flood", "name": "Enchente", "copies": 2, "grossLossPerFarmer": 4, "harvestBonusPerFarmer": 0, "resilienceDelta": -1},
+    {"id": "pests", "name": "Pragas", "copies": 2, "grossLossPerFarmer": 5, "harvestBonusPerFarmer": 0, "resilienceDelta": -1},
+    {"id": "favorable", "name": "Clima favorável", "copies": 2, "grossLossPerFarmer": 0, "harvestBonusPerFarmer": 2, "resilienceDelta": 0},
+    {"id": "fair", "name": "Feira regional", "copies": 1, "grossLossPerFarmer": 0, "harvestBonusPerFarmer": 3, "resilienceDelta": 0},
+    {"id": "regular", "name": "Safra regular", "copies": 1, "grossLossPerFarmer": 0, "harvestBonusPerFarmer": 0, "resilienceDelta": 0}
+  ],
+  "eventCopies": [
+    {"id": "drought-1", "type": "drought"}, {"id": "drought-2", "type": "drought"},
+    {"id": "flood-1", "type": "flood"}, {"id": "flood-2", "type": "flood"},
+    {"id": "pests-1", "type": "pests"}, {"id": "pests-2", "type": "pests"},
+    {"id": "favorable-1", "type": "favorable"}, {"id": "favorable-2", "type": "favorable"},
+    {"id": "fair-1", "type": "fair"}, {"id": "regular-1", "type": "regular"}
+  ],
+  "deckRules": {"shuffleOnce": true, "drawWithoutReplacement": true, "drawPerRound": 1, "roundsDrawn": 5, "remainingTypeCountsVisible": true, "futureOrderVisible": false, "storeFullOrderForReplay": true, "eventProbabilitiesAreEmpirical": false},
+  "settlementRules": {
+    "allPlanCostsValidatedBeforeAnyPlanEffect": true,
+    "allowDebt": false,
+    "plantingAndGrantAppliedOnce": true,
+    "resolutionAtomicAndIdempotent": true,
+    "directEventCashLoss": false,
+    "allLossProtectionsAdditive": true,
+    "effectiveLossMinimum": 0,
+    "harvestRevenueMinimum": 0,
+    "excessProtectionCreatesRevenue": false,
+    "resilienceClampedOnceAtEnd": true,
+    "preventionThisRound": ["new_soil_cover", "new_diversification", "government_assistance"],
+    "oneActionCannotTargetMultipleRounds": true,
+    "freeTransfersAllowed": false,
+    "undoAfterEventAllowed": false,
+    "individualScoreOrVictory": false
+  },
+  "physicalInventory": {"farmerActionTypes": 4, "farmerCatalogCopies": 2, "governmentActions": 4, "reusableActionCards": 12, "eventCards": 10, "totalCards": 22, "roleBoards": 3},
+  "referenceFixtures": [
+    {"name": "reserva_seca", "round": 1, "actions": {"lia": "reserve", "bento": "reserve", "rosa": "reserve"}, "event": "drought", "expected": {"cash": [10, 10, 9], "resilience": 1}},
+    {"name": "reserva_enchente", "round": 1, "actions": {"lia": "reserve", "bento": "reserve", "rosa": "reserve"}, "event": "flood", "expected": {"cash": [12, 12, 9], "resilience": 2}},
+    {"name": "coberturas_assistencia_seca", "round": 1, "actions": {"lia": "A1", "bento": "A1", "rosa": "G1"}, "event": "drought", "expected": {"cash": [9, 9, 5], "resilience": 5}},
+    {"name": "cooperativa_clima_favoravel", "round": 1, "actions": {"lia": "A4", "bento": "A4", "rosa": "G4"}, "event": "favorable", "expected": {"cash": [15, 15, 7], "resilience": 4}},
+    {"name": "exemplo_visual", "round": 1, "actions": {"lia": "A1", "bento": "A3", "rosa": "G1"}, "event": "drought", "expected": {"cash": [9, 12, 5], "resilience": 4}}
+  ],
+  "referenceJourney": [
+    {"round": 1, "actions": ["A1", "A3", "G1"], "event": "drought", "cash": [9, 12, 5], "resilience": 4},
+    {"round": 2, "actions": ["A2", "A1", "G1"], "event": "pests", "cash": [7, 7, 4], "resilience": 6},
+    {"round": 3, "actions": ["A4", "A4", "G4"], "event": "regular", "cash": [8, 8, 5], "resilience": 6},
+    {"round": 4, "actions": ["A3", "A2", "G2"], "event": "flood", "cash": [14, 9, 5], "resilience": 6},
+    {"round": 5, "actions": ["reserve", "A3", "reserve"], "event": "favorable", "cash": [20, 17, 8], "resilience": 5}
+  ],
+  "validationStatus": {"humanPlaytestsOfThisVersion": 0, "empiricalValidation": false, "balancedGameClaim": false, "note": "Exemplos calculados e auditoria de regras não substituem testes de compreensão e negociação com pessoas."}
+}

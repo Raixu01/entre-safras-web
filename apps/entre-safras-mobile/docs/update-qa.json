@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-24T23:59:51.327Z",
+  "browser": "153.0.8010.12",
+  "from": "qa-a",
+  "to": "qa-b",
+  "automaticReload": false,
+  "quotaBlocksUpdate": true,
+  "savePreserved": true,
+  "result": "passed"
+}

@@ -1,0 +1,30 @@
+{
+  "method": "Soma gzip dos bundles JS; soma conservadora de todos os arquivos dist; contraste WCAG sRGB calculado. Não mede latência em aparelho físico.",
+  "jsGzipBytes": 40819,
+  "jsBudgetBytes": 250000,
+  "distBytes": 170532,
+  "precacheBudgetBytes": 5000000,
+  "contrast": [
+    {
+      "label": "texto/papel",
+      "ratio": 11.31
+    },
+    {
+      "label": "secundário/papel",
+      "ratio": 5.82
+    },
+    {
+      "label": "botão primário",
+      "ratio": 8.12
+    },
+    {
+      "label": "erro/superfície",
+      "ratio": 5.67
+    },
+    {
+      "label": "foco/superfície",
+      "ratio": 7.84
+    }
+  ],
+  "passed": true
+}
